@@ -32,7 +32,7 @@ b. Identifiers
 
 - a sequence of letters, digits and "_", such that the first character is a lowercase letter
 
-    identifier ::= lowerLetter | lowerLetter {letter | digit | "_"}
+    identifier = lowerLetter | lowerLetter {letter | digit | "_"}
 
 
 c. Constants
