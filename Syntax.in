@@ -18,11 +18,11 @@ exp = term {("+" | "-") exp} | constant
 term = factor {("*" | "/") term}
 factor = "(" exp ")" | IDENTIFIER | int
 
-RELATION =  "<" | "<=" | "==" | "<>" | ">=" | ">"
+RELATION =  "<" | "<=" | "=" | "<>" | ">=" | ">"
 condition = exp RELATION exp
 
 assignStmt = IDENTIFIER "<-" exp
-ioStmt = "read" | "write" "(" exp ")"
+ioStmt = ("read" | "write") "(" exp ")"
 ifStmt = "if" condition cmpdStmt ["else" compStmt]
 untilStmt = "repeat" cmpdStmt "until" condition
 forStmt = "for" IDENTIFIER "from" "(" exp "," exp "," exp ")" cmpdStmt
