@@ -3,15 +3,16 @@ The words - predefined tokens are specified between " and "
 
 
 program = cmpdStmt
-cmpdStmt = "{" statements "}"
-statements = stmt ";" {stmt ";"}
+cmpdStmt = "{" declarations statements "}"
 
+declarations = {declaration}
 declaration = "declare" IDENTIFIER ":" type ";"
-typeSimple = "int" | "string" | "char"
 type = typeSimple | arrayType
+typeSimple = "int" | "string" | "char"
 arrayType = "array" "(" typeSimple ")"
 
-stmt = assignStmt | ioStmt | ifStmt | loopStmt | declaration
+statements = stmt ";" {stmt ";"}
+stmt = assignStmt | ioStmt | ifStmt | loopStmt
 loopStmt = forStmt | untilStmt
 
 exp = term {("+" | "-") exp} | constant
