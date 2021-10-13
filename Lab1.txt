@@ -1,0 +1,120 @@
+compute de max/min of 3 numbers
+
+1.
+
+{
+	declare a:int;
+	declare b:int;
+	declare c:int;
+	declare max:int;
+	declare min:int;
+
+	read(a);
+	read(b);
+	read(c);
+
+	if a>b 
+	{
+		if b>c
+		{
+			max <- a;
+			min <- c;
+		}
+		else
+		{
+			min <- b;
+			if a>c
+				max <- a;
+			else
+				max <- c;;
+		};
+	}
+	else
+	{
+		if b<c
+		{
+			min <- a;
+			max <- c;
+		}
+		else
+		{
+			max <- b;
+			if a>c
+				min <- c;
+			else
+				min <- a;;
+		};
+	}
+
+	write(min);
+	write(max);
+}
+
+
+
+compute gcd of 2 numbers
+
+2.
+
+{
+	declare a:int;
+	declare b:int;
+	declare gcd:int;
+
+	read(a);
+	read(b);
+
+	repeat
+	{
+		if a>b
+			a <- a-b;
+		else
+			b <- b-a;;
+	} 
+	until a = b;
+
+	gcd <- a;
+	write(gcd);
+}
+
+
+compute the sum of n numbers
+
+3.
+
+{
+	declare n:int;
+	declare nr:int;
+
+	declare i:int;
+	declare sum:int;
+	sum <- 0;
+
+	read(n);
+	for i from (1,n,1)
+	{
+		read(nr);
+		sum <- sum + nr;
+	};
+
+	write(sum);
+}
+
+
+
+
+2 types of lexical errors
+
+{
+	declare a:int;
+	declare b:int;
+	declare gcd:int;
+
+	declare myString:string;
+	myString <- "ayy';
+
+	read(a!2#e);
+	read(b);
+
+}
+
