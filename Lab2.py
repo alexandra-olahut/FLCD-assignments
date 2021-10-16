@@ -3,7 +3,7 @@
 from collections import deque
 
 
-class HashTable:
+class SymboleTable:
 
     def __init__(self, size) -> None:
         self.__size = size        # m=nr positions in hash table
@@ -54,7 +54,7 @@ class HashTable:
 
 
 def test():
-    ST = HashTable(5)
+    ST = SymboleTable(5)
 
     for i in range(10):
         ST.add(i)
