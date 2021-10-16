@@ -11,8 +11,10 @@ type = typeSimple | arrayType
 typeSimple = "int" | "string" | "char"
 arrayType = "array" "(" typeSimple ")"
 
-statements = stmt ";" {stmt ";"}
-stmt = assignStmt | ioStmt | ifStmt | loopStmt
+statements = {simpleStmt ";" | structStmt}
+stmt = simpleStmt | structStmt
+simpleStmt = assignStmt | ioStmt
+structStmt = ifStmt | loopStmt
 loopStmt = forStmt | untilStmt
 
 exp = term {("+" | "-") exp} | constant

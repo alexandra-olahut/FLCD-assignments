@@ -26,8 +26,8 @@ compute de max/min of 3 numbers
 			if a>c
 				max <- a;
 			else
-				max <- c;;
-		};
+				max <- c;
+		}
 	}
 	else
 	{
@@ -42,8 +42,8 @@ compute de max/min of 3 numbers
 			if a>c
 				min <- c;
 			else
-				min <- a;;
-		};
+				min <- a;
+		}
 	}
 
 	write(min);
@@ -69,9 +69,9 @@ compute gcd of 2 numbers
 		if a>b
 			a <- a-b;
 		else
-			b <- b-a;;
+			b <- b-a;
 	} 
-	until a = b;
+	until a = b
 
 	gcd <- a;
 	write(gcd);
@@ -95,7 +95,7 @@ compute the sum of n numbers
 	{
 		read(nr);
 		sum <- sum + nr;
-	};
+	}
 
 	write(sum);
 }
