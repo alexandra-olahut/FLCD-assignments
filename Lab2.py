@@ -1,4 +1,4 @@
-#!!! 1b
+# 1b
 # separate tables for identifiers, respectively constants (create 2 instances)
 from collections import deque
 
@@ -6,7 +6,7 @@ from collections import deque
 class HashTable:
 
     def __init__(self, size) -> None:
-        self.__size = size      # m/nr positions in hash table
+        self.__size = size        # m=nr positions in hash table
         self.__nrElements = 0     # actual nr of ids/constants kept in table
         self.__elements = [deque() for _ in range(size)]
     
@@ -44,27 +44,28 @@ class HashTable:
         return True
 
     def __str__(self):
-        pass
+        string = ""
+        for ll in self.__elements:
+            string += str(ll) + '\n'
+        return string
 
+    def size(self):
+        return self.__nrElements
 
 
 def test():
-    ST = HashTable(10)
-
-    ST.add("a")
-    ST.add("b")
-    ST.add("a")
-    ST.add(3)
+    ST = HashTable(5)
 
     for i in range(10):
         ST.add(i)
         print(str(i) + " pos: " + str(ST.getPosition(i)))
 
-    print(ST.getPosition("a"))
-    ST.add("a")
-    print(ST.getPosition("a"))
-    print(ST.getPosition("a"))
-    print(ST.getPosition(3))
+    print(ST)
+    print(ST.size())
+    for i in range(10):
+        ST.add(i)
+    print(ST.size())
+
 
 test()
 
