@@ -3,7 +3,7 @@
 from collections import deque
 
 
-class SymboleTable:
+class HashTable:
 
     def __init__(self, size) -> None:
         self.__size = size        # m=nr positions in hash table
@@ -45,30 +45,20 @@ class SymboleTable:
 
     def __str__(self):
         string = ""
-        for ll in self.__elements:
-            string += str(ll) + '\n'
+        for i in range(len(self.__elements)):
+            if len(self.__elements[i]) == 0:
+                continue
+
+            stringlist = "{:<3} -> ".format(str(i))
+            for el in self.__elements[i]:
+                stringlist += "{:<10} | ".format(el)
+            string += stringlist + "\n"
+        
+        if string == "":
+            return "{}"
         return string
 
     def size(self):
         return self.__nrElements
-
-
-def test():
-    ST = SymboleTable(5)
-
-    for i in range(10):
-        ST.add(i)
-        print(str(i) + " pos: " + str(ST.getPosition(i)))
-
-    print(ST)
-    print(ST.size())
-    for i in range(10):
-        ST.add(i)
-    print(ST.size())
-
-
-test()
-
-
 
 

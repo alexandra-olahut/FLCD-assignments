@@ -21,7 +21,7 @@ exp = term {("+" | "-") exp} | constant
 term = factor {("*" | "/") term}
 factor = "(" exp ")" | IDENTIFIER | int
 
-RELATION =  "<" | "<=" | "=" | "<>" | ">=" | ">"
+RELATION =  "<" | "<=" | "=" | "!=" | ">=" | ">"
 condition = exp RELATION exp
 
 assignStmt = IDENTIFIER "<-" exp

@@ -4,18 +4,22 @@
 /
 <-
 =
-<>
+!=
 <
 >
 <=
 >=
+ 
 {
 }
+[
+]
 (
 )
 :
 ;
 ,
+ 
 int
 string
 char
@@ -29,8 +33,3 @@ repeat
 until
 for
 from
-
-
-
-
-(operators, separators, keywords)

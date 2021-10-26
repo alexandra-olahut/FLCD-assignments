@@ -14,7 +14,7 @@ a. Special symbols, representing:
 
 - operators
 		- arithmetic  + - * /
-		- relational   < <= > >= = <>
+		- relational   < <= > >= = !=
 		- assignment   <-
 - separators () {} space : ; ,
 - reserved words
