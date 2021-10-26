@@ -6,7 +6,7 @@ from ProgramInternalForm import PIF
 class Scanner:
 
     def __init__(self) -> None:
-        self.operators, self.separators, self.keywords = readTokens("C:/Users/olahu/Desktop/Facultate/Sem5/FLCD/Labs/L3/token.in")
+        self.operators, self.separators, self.keywords = readTokens("token.in")
 
         self.identifiersTable = SymbolTable(100)
         self.constantsTable = SymbolTable(100)
@@ -14,15 +14,17 @@ class Scanner:
 
         self.errors = []
 
+
     def scan(self, file_path):
         program = readProgram(file_path)
         nrLine = 0
 
         for line in program:
+            # we detect the tokens from the line
             nrLine +=1
             tokens = self.tokenize(line)
+
             for token in tokens:
-                print(token)
                 if self.isReservedWord(token) or self.isOperator(token) or self.isSeparator(token):
                     self.pif.add(token, (-1,-1))
                 else:
@@ -34,6 +36,8 @@ class Scanner:
                         self.pif.add("constant", index)
                     else:
                         self.error(token, nrLine)
+
+        # handle errors
         if(len(self.errors) == 0):
             print("Lexically correct")
             self.generateOutput()
@@ -47,13 +51,6 @@ class Scanner:
         self.errors.append("Lexical error at line " + str(nrLine) + ": " + token)
 
     def generateOutput(self):
-        print("PIF")
-        print(self.pif)
-        print("ST ids")
-        print(self.identifiersTable)
-        print("ST constants")
-        print(self.constantsTable)
-
         with open("PIF.out", 'w') as file:
             file.write(str(self.pif))
         with open("ST.out", 'w') as file:
@@ -65,23 +62,27 @@ class Scanner:
 
 
 
+
+
     def tokenize(self, line):
+        # remove spaces and newlines
         line = line.replace('\n', '').strip()
         if line == '':
             return []
 
+        # handle the strings and the operators
         line, strings = self.search_for_strings(line)
         line = self.search_for_operators(line)
 
+        # split the line by the separators
         for separator in self.separators:
             line = line.replace(separator, " "+separator+" ")
-
         tokens = line.split(" ")
         tokens = [t for t in tokens if t != '']
-        print(tokens)
+
+        # replace back the string tokens
         for i in range(len(tokens)):
             if re.match("^\$[0-9]+\$$", tokens[i]) is not None:
-                print(strings[0])
                 tokens[i] = strings[int(tokens[i][1:-1])]
 
         return tokens
@@ -91,9 +92,11 @@ class Scanner:
         result = ""
         i = 0
         while i < len(line):
+            # check for compound operators
             if i+1<len(line) and self.isOperator(line[i]+line[i+1]):
                 result += " " + line[i]+line[i+1] + " "
                 i +=1
+            # check for simple operators
             elif self.isOperator(line[i]):
                 result += " " + line[i] + " "
             else:
@@ -101,34 +104,47 @@ class Scanner:
             i +=1
         return result
 
+
     def search_for_strings(self, line):
+        # replace the strings ("...") with $id$, where id is the index in the list of strings
         strings = []
         line_without_strings = ""
 
         i = 0
         isString = False
         string = ""
+
         while i<len(line):
+
+            # when encountering a '"', its either the beginning or end of a string
             if line[i] == '"':
+                # we add the finished string to the list as $index$
                 if isString:
                     string += '\"'
                     strings.append(string)
                     line_without_strings += " $" + str(len(strings)-1) + "$ "
+                # otherwise we start a new string
                 else:
                     string = '\"'
                 isString = not isString
+
             else:
                 if isString:
                     string += line[i]
                 else:
                     line_without_strings += line[i]
             i +=1
+
         if isString:
             strings.append(string)
             line_without_strings += " $" + str(len(strings)-1) + "$ "
+
         return line_without_strings, strings
 
     
+
+
+
     def isReservedWord(self, token):
         return token in self.keywords
 
@@ -155,7 +171,4 @@ class Scanner:
     @staticmethod
     def isString(token):
         return re.match("^\"[A-Za-z0-9\.\?\!, ]*\"$", token) is not None
-    # @staticmethod
-    # def isChar(token):
-    #     return re.match("^\'[A-Za-z0-9\.\?\!,\s]\'$", token) is not None
 

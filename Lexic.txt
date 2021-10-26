@@ -5,7 +5,7 @@ a. Upper (A-Z) and lower case letters (a-z) of the English alphabet
 b. Underline character '_';
 c. Decimal digits (0-9);
 
-* for string/char: " " | "." | "?" | "!" | ","
+* for string: " " | "." | "?" | "!" | ","
 
 
 Lexic:
@@ -16,9 +16,9 @@ a. Special symbols, representing:
 		- arithmetic  + - * /
 		- relational   < <= > >= = !=
 		- assignment   <-
-- separators () {} space : ; ,
+- separators () {} [] space : ; ,
 - reserved words
-	int string char array declare read write if else repeat until for from
+	int string array declare read write if else repeat until for from
 
 
 b. Identifiers
@@ -40,10 +40,9 @@ c. Constants
 	1. int
 		int = "0" | ["-"] nonzeroDigit {digit}
 
-	2. char
+	//2. char
 		special = " " | "." | "?" | "!" | ","
 		character = digit | letter | special
-		char = "'" character "'"
 
 	3. string
 		stringSeparator = """

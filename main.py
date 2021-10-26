@@ -5,7 +5,31 @@ from Scanner import Scanner
 
 
 s = Scanner()
-s.scan("C:/Users/olahu/Desktop/Facultate/Sem5/FLCD/Labs/Github/FLCD-assignments/test.txt")
+s.scan("perror.txt")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

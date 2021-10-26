@@ -8,7 +8,7 @@ cmpdStmt = "{" declarations statements "}"
 declarations = {declaration}
 declaration = "declare" IDENTIFIER ":" type ";"
 type = typeSimple | arrayType
-typeSimple = "int" | "string" | "char"
+typeSimple = "int" | "string"
 arrayType = "array" "(" typeSimple ")"
 
 statements = {simpleStmt ";" | structStmt}

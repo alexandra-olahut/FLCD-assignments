@@ -1,6 +1,6 @@
 
 - 2 simple data types and a user-defined type
-int, string, char
+int, string
 arrays: array(int), array(string)
 
 - statements:
@@ -20,7 +20,3 @@ else {}
 - loop
 for i from (lowerLimit,upperLimit,step)
 repeat {} until condition
-
-
-- some conditions will be imposed on the way the identifiers and constants can be formed:
-
