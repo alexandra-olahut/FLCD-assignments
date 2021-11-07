@@ -2,6 +2,7 @@ import re
 from utils import readTokens, readProgram
 from SymbolTable import SymbolTable
 from ProgramInternalForm import PIF
+from FiniteAutomata import FiniteAutomata
 
 class Scanner:
 
@@ -11,6 +12,11 @@ class Scanner:
         self.identifiersTable = SymbolTable(100)
         self.constantsTable = SymbolTable(100)
         self.pif = PIF()
+
+        self.intFA = FiniteAutomata()
+        self.idFA = FiniteAutomata()
+        self.intFA.read_from_file('FA_int.in')
+        self.idFA.read_from_file('FA_id.in')
 
         self.errors = []
 
@@ -159,16 +165,17 @@ class Scanner:
 
 
     def isIdentifier(self, token):
-        return re.match("^[a-z][\w]*$", token) is not None
+        # return re.match("^[a-z][\w]*$", token) is not None
+        return self.idFA.isSequenceAccepted(token)
 
 
     def isConstant(self, token):
         return self.isNumber(token) or self.isString(token)
 
-    @staticmethod
-    def isNumber(token):
-        return token == "0" or re.match("^-?[1-9][0-9]*$", token) is not None
-    @staticmethod
-    def isString(token):
+    def isNumber(self, token):
+        # return token == "0" or re.match("^-?[1-9][0-9]*$", token) is not None
+        return self.intFA.isSequenceAccepted(token)
+
+    def isString(self, token):
         return re.match("^\"[A-Za-z0-9\.\?\!, ]*\"$", token) is not None
 
