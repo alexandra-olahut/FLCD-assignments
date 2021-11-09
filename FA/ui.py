@@ -15,7 +15,7 @@ class UI:
             '8':self.verifySequence
         }
         self.fa = FiniteAutomata()
-        self.read_FA('FA.in')
+        self.read_FA('FA\FA.in')
 
 
     def show_menu(self):
@@ -84,11 +84,17 @@ class UI:
 
 
     def verifyDFA(self):
-        print(self.fa.isDFA())
+        if self.fa.isDFA():
+            print("It is DFA")
+        else:
+            print("It is not DFA")
 
     def verifySequence(self):
         if self.fa.isDFA():
             seq = input(" >> Sequence: ")
-            print(self.fa.isSequenceAccepted(seq))
+            if self.fa.isSequenceAccepted(seq):
+                print("Accepted")
+            else:
+                print("Not accepted")
         else:
             print("Your FA is not deterministic")
