@@ -1,8 +1,0 @@
-S A B C D
-a b c e
-S
-S a -> a A b | B A
-b A -> a A | c A | c
-B -> D C
-D -> e | b
-C -> c
