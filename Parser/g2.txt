@@ -1,0 +1,28 @@
+program cmpdStmt declaration declarations statements type typeSimple arrayType stmt simpleStmt structStmt assignStmt ioStmt ifStmt loopStmt forStmt untilStmt exp term factor relation condition elseStmt termAux expAux
+{ } declare : ; , int string array <- ( ) + - * / < <= = != >= > ID CONST read write if else repeat until for from
+program
+program -> cmpdStmt
+cmpdStmt -> { declarations statements }
+declarations -> declaration declarations | eps
+declaration -> declare ID : type ;
+type -> typeSimple | arrayType
+typeSimple -> int | string
+arrayType -> array ( typeSimple )
+statements -> eps | stmt ; statements
+stmt -> simpleStmt | structStmt
+simpleStmt -> assignStmt | ioStmt
+structStmt -> ifStmt | loopStmt
+loopStmt -> forStmt | untilStmt
+exp -> term expAux
+expAux -> + exp | - exp
+term -> factor termAux
+termAux -> * term | / term | eps
+factor -> ( exp ) | ID | CONST
+relation -> < | <= | > | >= | = | !=
+condition -> exp relation exp
+assignStmt -> ID <- exp
+ioStmt -> read ( exp ) | write ( exp )
+ifStmt -> if condition cmpdStmt elseStmt 
+elseStmt -> else cmpdStmt | eps
+untilStmt -> repeat cmpdStmt until condition
+forStmt -> for ID from ( exp , exp , exp ) cmpdStmt

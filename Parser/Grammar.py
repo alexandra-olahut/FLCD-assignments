@@ -17,26 +17,28 @@ class Grammar:
             lines = [line.replace('\n', "").strip() for line in lines]
 
             self.nonterminals = lines[0].split(" ")
-            # print(self.nonterminals)
+
             self.terminals = lines[1].split(" ")
-            # print(self.terminals)
+
             self.start_symbol = lines[2]
-            # print(self.start_symbol)
+
+            production_index = 0
             for index in range(3, len(lines)):
                 # read a production
                 production = lines[index]
                 left, right = production.split('->')
+
                 left = left.strip().split(' ')
-                # print(left)
                 left = tuple(left)
+
                 right = right.strip().split('|')
                 for value in right:
+                    production_index += 1
                     values = value.strip().split(' ')
                     if left in self.productions.keys():
-                        self.productions[left].append(values)
+                        self.productions[left].append((values, production_index))
                     else:
-                        self.productions[left] = [values]
-            # print(self.productions)
+                        self.productions[left] = [(values, production_index)]
 
     
     def getTerminals(self):
@@ -49,11 +51,11 @@ class Grammar:
         return self.productions
 
     def getProductionsForNonterminal(self, nonterminal):
-        productions = {}
+        productions = []
         if self.isCFG():
             for left in self.productions.keys():
                 if left[0] == nonterminal:
-                    productions[left[0]] = self.productions[left]
+                    return self.productions[left]
         return productions
 
     def isCFG(self):
