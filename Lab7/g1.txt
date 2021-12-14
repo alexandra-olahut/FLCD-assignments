@@ -1,8 +1,7 @@
-S A B C D
-a b c
+S A B C
+( ) int + *
 S
-S -> a A b | B A
-A -> a A | c A | c
-B -> D C
-D -> eps | b
-C -> c
+S -> A B
+A -> ( S ) | int C
+B -> + S | eps
+C -> * A | eps

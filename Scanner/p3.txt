@@ -11,6 +11,6 @@
     {
         read(nr);
         sum <- sum + nr;
-    }
+    };
     write(sum);
 }

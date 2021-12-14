@@ -22,11 +22,11 @@ class UI:
         print("    3. Follow")
         print("    4. Table")
         print("    5. Parse a sequence")
-        print(" b: back")
+        print(" x: back")
 
     def run(self):
         while True:
-            grammarFile = input("Grammar file: ")
+            grammarFile = input("\nGrammar file: ")
             if grammarFile == 'x':
                 return
             self.chooseGrammar(grammarFile)
@@ -36,7 +36,7 @@ class UI:
         self.grammarMenu()
         while True:
             cmd = input(" > ")
-            if cmd == 'b':
+            if cmd == 'x':
                 return
             if cmd == 'm':
                 self.grammarMenu()
@@ -49,12 +49,12 @@ class UI:
                 continue
 
     def printGrammar(self):
-        print("  Terminals: ")
+        print("\n   Terminals: ")
         print(self.grammar.terminals)
-        print("  Nonterminals: ")
+        print("\n   Nonterminals: ")
         print(self.grammar.nonterminals)
-        print("  Start symbol: ", self.grammar.start_symbol)
-        print("  Productions: ")
+        print("\n   Start symbol: ", self.grammar.start_symbol)
+        print("\n   Productions: ")
         for prod in self.grammar.getProduction().keys():
             print(str(prod[0]) + " -> " + str(self.grammar.getProduction()[prod]))
 
@@ -88,6 +88,8 @@ class UI:
         
         sequenceString = ' '.join(sequence)
         productionsString = self.parser.parse(sequenceString)
+        if productionsString == []:
+            return
         parseTree = Tree(self.grammar, productionsString)
         out = parseTree.printTree()
         with open(outFile, 'w') as file:

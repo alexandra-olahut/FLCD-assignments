@@ -21,10 +21,10 @@
 		{
 			min <- b;
 			if a>c
-				max <- a;
+				{max <- a;}
 			else
-				max <- c;
-		}
+				{max <- c;};
+		};
 	}
 	else
 	{
@@ -37,11 +37,11 @@
 		{
 			max <- b;
 			if a > c
-				min <- c;
+				{min <- c;}
 			else
-				min <- a;
-		}
-	}
+				{min <- a;};
+		};
+	};
 
 	write(min);
 	write(max);

@@ -46,6 +46,8 @@ class Parser:
                 return False
         return True
 
+
+
     def buildFirst(self):
         # initialize first(nonterminals) with empty sets
         first = {nonterminal: set() for nonterminal in self.grammar.nonterminals}
@@ -184,8 +186,8 @@ class Parser:
                         stack.insert(0, rhs[i])
                 productions.append(index)
             else:
-                print(productions)
-                return None
+                print("Not accepted")
+                return []
 
 
     def printTable(self):

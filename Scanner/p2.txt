@@ -9,11 +9,11 @@
     repeat
     {
         if a>b
-            a <- a-b;
+            {a <- a-b;}
         else
-        b <- b-a;
+            {b <- b-a;};
     } 
-    until a = b
+    until a = b;
 
     gcd <- a;
     write(gcd);

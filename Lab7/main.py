@@ -8,6 +8,44 @@ ui = UI()
 ui.run()
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # g = Grammar()
 # g.read_from_file('L5\\my.txt')
 # # S -> aSbS -> acbS -> acbc

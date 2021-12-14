@@ -12,6 +12,7 @@ class Node:
     def __str__(self) -> str:
         return "N: "+ str(self.index)+ "-> "+ str(self.info)+ " p "+ str(self.parent)+ " l "+ str(self.left_sibling)
 
+
 class Tree:
     def __init__(self, grammar: Grammar, productions):
         self.nodes = []
@@ -50,12 +51,3 @@ class Tree:
                 productionIndex = production[1]
                 if productionIndex == index:
                     return (lhs, rhs)
-
-
-    def reconstructSequence(self):
-        parents = [node.parent for node in self.nodes]
-        leaves = []
-        for node in self.nodes:
-            if node.index not in parents:
-                leaves.append(node.info)
-        return leaves
