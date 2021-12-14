@@ -1,0 +1,7 @@
+S A B
+a c d e f eps
+S
+S -> A B a | B A c
+A -> d | e | eps
+B -> f | eps
+S -> eps

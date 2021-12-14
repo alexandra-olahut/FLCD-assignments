@@ -5,7 +5,7 @@ from Scanner import Scanner
 
 
 s = Scanner()
-s.scan("p1.txt")
+s.scan("new.txt")
 
 
 
