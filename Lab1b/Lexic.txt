@@ -1,0 +1,51 @@
+
+Alphabet:
+
+a. Upper (A-Z) and lower case letters (a-z) of the English alphabet
+b. Underline character '_';
+c. Decimal digits (0-9);
+
+* for string: " " | "." | "?" | "!" | ","
+
+
+Lexic:
+
+a. Special symbols, representing:
+
+- operators
+		- arithmetic  + - * /
+		- relational   < <= > >= = !=
+		- assignment   <-
+- separators () {} [] space : ; ,
+- reserved words
+	int string array declare read write if else repeat until for from
+
+
+b. Identifiers
+
+    lowerLetter = "a" | "b" | ... | "z"
+    upperLetter = "A" | "B" | . ..| "Z"
+    letter = lowerLetter | upperLetter
+
+    nonzeroDigit = "1" | "2" |...| "9"
+    digit = "0" | nonzeroDigit
+
+- a sequence of letters, digits and "_", such that the first character is a lowercase letter
+
+    identifier = lowerLetter | lowerLetter {letter | digit | "_"}
+
+
+c. Constants
+
+	1. int
+		int = "0" | ["-"] nonzeroDigit {digit}
+
+	//2. char
+		special = " " | "." | "?" | "!" | ","
+		character = digit | letter | special
+
+	3. string
+		stringSeparator = """
+		string = stringSeparator {character} stringSeparator
+
+

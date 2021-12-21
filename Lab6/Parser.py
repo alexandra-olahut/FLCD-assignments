@@ -46,6 +46,8 @@ class Parser:
                 return False
         return True
 
+
+
     def buildFirst(self):
         # initialize first(nonterminals) with empty sets
         first = {nonterminal: set() for nonterminal in self.grammar.nonterminals}
@@ -69,12 +71,6 @@ class Parser:
                 for production in value:
                     rhs = production[0]
                     if self.isCalculated(first, rhs):
-                        first_rhs = []
-                        for element in rhs:
-                            if element == "eps" or element in self.grammar.getTerminals():
-                                first_rhs.append({element})
-                            else:
-                                first_rhs.append(first[element])
                         new_first[lhs] = new_first[lhs].union(self.concatenateAll(first, rhs))
             
             if new_first == first:
@@ -190,8 +186,8 @@ class Parser:
                         stack.insert(0, rhs[i])
                 productions.append(index)
             else:
-                print(productions)
-                return None
+                print("Not accepted")
+                return []
 
 
     def printTable(self):

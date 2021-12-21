@@ -65,4 +65,4 @@ class Grammar:
             if left[0] not in self.nonterminals:
                 return False
         return True
-            
+           

@@ -1,0 +1,43 @@
+The words - predefined tokens are specified between " and "
+
+
+
+program = cmpdStmt
+cmpdStmt = "{" declarations statements "}"
+
+declarations = {declaration}
+declaration = "declare" IDENTIFIER ":" type ";"
+type = typeSimple | arrayType
+typeSimple = "int" | "string"
+arrayType = "array" "(" typeSimple ")"
+
+statements = {simpleStmt ";" | structStmt}
+stmt = simpleStmt | structStmt
+simpleStmt = assignStmt | ioStmt
+structStmt = ifStmt | loopStmt
+loopStmt = forStmt | untilStmt
+
+exp = term {("+" | "-") exp} | constant
+term = factor {("*" | "/") term}
+factor = "(" exp ")" | IDENTIFIER | int
+
+RELATION =  "<" | "<=" | "=" | "!=" | ">=" | ">"
+condition = exp RELATION exp
+
+assignStmt = IDENTIFIER "<-" exp
+ioStmt = ("read" | "write") "(" exp ")"
+ifStmt = "if" condition cmpdStmt ["else" compStmt]
+untilStmt = "repeat" cmpdStmt "until" condition
+forStmt = "for" IDENTIFIER "from" "(" exp "," exp "," exp ")" cmpdStmt
+
+
+
+
+
+constant = int | char | string | emptyArray
+emptyArray = "[" "]"
+
+* (Lexic.txt)
+int = "0" | ["-"] nonzeroDigit {digit}
+char = "'" character "'"
+string = stringSeparator {character} stringSeparator
